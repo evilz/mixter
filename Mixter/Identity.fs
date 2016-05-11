@@ -53,9 +53,7 @@ module Read =
         | Add of Session
         | Remove of SessionId
 
-    type getSessionById = SessionId -> Session option
-
-    let apply (getSessionById:getSessionById) event = 
+    let apply event = 
         match event with
         | UserConnected e -> Add { SessionId = e.SessionId; UserId = e.UserId }
         | UserDisconnected e -> Remove e.SessionId

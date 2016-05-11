@@ -53,18 +53,17 @@ open Read
 type ``Given a handler of session events`` ()=
     let sessionId = SessionId.generate
     let userId = UserId "clem@mix-it.fr"
-    let sessions = fun x -> Some { SessionId = sessionId; UserId = userId }
     
     [<Test>]
     member x.``When project user connected, then it returns a Session projection`` () =
         let userConnected = UserConnected { SessionId = sessionId; UserId = userId; ConnectedAt = DateTime.Now}
         let expectedAddSession = Add { SessionId = sessionId; UserId = userId }
-        Read.apply sessions userConnected
+        Read.apply userConnected
             |> should equal expectedAddSession
             
     [<Test>]
     member x.``When project user disconnected, then it returns a Remove change of Session projection`` () =
         let userConnected = UserDisconnected { SessionId = sessionId; UserId = userId }
         let expectedRemoveSession = Remove sessionId
-        Read.apply sessions userConnected
+        Read.apply userConnected
             |> should equal expectedRemoveSession
