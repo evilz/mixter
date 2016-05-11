@@ -47,7 +47,6 @@ let apply events =
 
 module Read =
     type Session = { SessionId: SessionId; UserId: UserId }
-        with static member empty = { SessionId = SessionId ""; UserId = UserId "" }
         
     type RepositoryChange = 
         | None

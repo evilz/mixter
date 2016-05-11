@@ -9,9 +9,8 @@ type MemorySessionsStore() =
     let store = new Dictionary<SessionId, Session>()
 
     member this.GetSession sessionId = 
-        let mutable session = Session.empty
-        if store.TryGetValue(sessionId, &session) 
-        then Some session
+        if store.ContainsKey(sessionId) 
+        then Some store.[sessionId]
         else option.None
 
     member this.ApplyChange change = 
