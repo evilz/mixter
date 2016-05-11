@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+.paket/paket.exe
 
 # Build results
 [Dd]ebug/
