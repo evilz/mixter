@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Mixter.Domain
 {
+    [Projection]
     public abstract class DecisionProjectionBase
     {
         private readonly Dictionary<Type, Action<IDomainEvent>> _handlersByType = new Dictionary<Type, Action<IDomainEvent>>();

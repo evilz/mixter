@@ -2,6 +2,7 @@
 
 namespace Mixter.Domain.Identity
 {
+    [Aggregate]
     public class UserIdentity
     {
         private readonly DecisionProjection _projection = new DecisionProjection();
@@ -14,11 +15,13 @@ namespace Mixter.Domain.Identity
             }
         }
 
+        [Command]
         public static void Register(IEventPublisher eventPublisher, UserId userId)
         {
             eventPublisher.Publish(new UserRegistered(userId));
         }
 
+        [Command]
         public SessionId LogIn(IEventPublisher eventPublisher)
         {
             return Session.LogIn(eventPublisher, _projection.Id);

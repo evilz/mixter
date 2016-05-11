@@ -1,5 +1,6 @@
 ﻿namespace Mixter.Domain
 {
+    [Handler]
     public interface IEventHandler
     {
     }

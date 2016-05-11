@@ -64,6 +64,7 @@
     <Compile Include="Core\Subscriptions\SubscriptionId.cs" />
     <Compile Include="Core\Subscriptions\UnknownSubscription.cs" />
     <Compile Include="DecisionProjectionBase.cs" />
+    <Compile Include="Properties\Documentation.cs" />
     <Compile Include="DomainException.cs" />
     <Compile Include="Identity\Events\UserConnected.cs" />
     <Compile Include="Identity\Events\UserDisconnected.cs" />

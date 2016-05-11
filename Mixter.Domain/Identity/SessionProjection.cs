@@ -2,6 +2,7 @@
 
 namespace Mixter.Domain.Identity
 {
+    [Projection]
     public struct SessionProjection
     {
         public SessionId SessionId { get; private set; }

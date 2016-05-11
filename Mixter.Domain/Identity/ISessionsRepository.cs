@@ -1,5 +1,6 @@
 ﻿namespace Mixter.Domain.Identity
 {
+    [Repository]
     public interface ISessionsRepository
     {
         void Save(SessionProjection projection);
