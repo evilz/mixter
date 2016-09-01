@@ -11,6 +11,16 @@ referenceBranch=""
 MessageColor='\033[0;32m'
 CancelMessageColor='\033[0m'
 
+function switchRunnerIfWindows() {
+  case "$(uname -s)" in
+   CYGWIN*|MINGW*|MSYS*)
+     echo 'Windows detected => Use run.bat'
+	 ./run.bat
+	 exit
+     ;;
+  esac
+}
+
 function askLanguage() {
   while true; do
     read -p "Language (js, csharp, java, php) ?  " response
@@ -22,7 +32,7 @@ function askLanguage() {
       ;;
     "csharp")
       selectedLanguage=$response
-      referenceBranch="origin/csharp/v2.1"
+      referenceBranch="origin/csharp/v2.2"
       break
       ;;
     "java")
@@ -344,6 +354,8 @@ function initializeWorkflow(){
 
   git checkout -b $workshopBranch $currentTestTag
 }
+
+switchRunnerIfWindows
 
 askLanguage
 
